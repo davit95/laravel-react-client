@@ -1,26 +1,48 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import { Container } from "semantic-ui-react";
+import Routes from './Routes';
+import http from './http';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App =  ({ showNavBar = true, context }) => {
+    const [user, setUser] = useState({});
+    const handleSetUser = async () => {
+        getUser();
+    };
+
+    const handleRemoveUser = async () => {
+        removeUser();
+    };
+
+    const getUser = async () => {
+        const response = await http.get('user');
+        setUser({ ...response.data.user });
+    };
+
+    const removeUser = async () => {
+        setUser({});
+    };
+
+    useEffect(() => {
+        if (process.browser) {
+            if (localStorage.token && localStorage.token.length) {
+                Object.assign(http.defaults, { headers: { 'Authorization': `Bearer ${localStorage.token}` } })
+            }
+
+            getUser()
+        }
+    }, []);
+
+    return (
+        <Container>
+            <Routes
+                user={user}
+                handleSetUser={handleSetUser}
+                handleRemoveUser={handleRemoveUser}
+                showNavBar={showNavBar}
+            />
+        </Container>
+    )
+
+};
 
 export default App;
