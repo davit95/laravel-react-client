@@ -16,7 +16,7 @@ const Notfound = () => <h1>Not found</h1>
 const Routes = ({ user, handleSetUser, handleRemoveUser }) => (
     <div>
         <Switch>
-            <PrivateRoute path={["/home", "/"]} component={(routeProps) => <Home user={ user } {...routeProps} />} />
+            <PrivateRoute path={"/home"} component={(routeProps) => <Home user={ user } {...routeProps} />} />
             <Route exact path="/logout" component={ (routeProps) => <LogOut handleRemoveUser={ handleRemoveUser } {...routeProps} /> } />
             <Route exact path="/login" component={ (routeProps) => <Login user={ user } handleSetUser={ handleSetUser } {...routeProps} /> } />
             <Route exact path="/register" component={ (routeProps) => <Register user={ user } handleSetUser={ handleSetUser } {...routeProps} /> } />
