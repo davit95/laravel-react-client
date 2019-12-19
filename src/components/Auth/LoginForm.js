@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import http from '../../http';
-import { Form, Grid } from 'semantic-ui-react';
+import { Grid , Button} from 'semantic-ui-react';
+import { Form,Input } from 'semantic-ui-react-form-validator';
+
 import { client } from '../../Client';
 
 class LoginForm extends Component {
@@ -32,21 +34,25 @@ class LoginForm extends Component {
             <Grid>
                 <Grid.Row centered>
                     <Grid.Column width={8}>
-                        <Form onSubmit={this.handleSubmit}>
-                            <Form.Input
+                        <Form ref="form" onSubmit={this.handleSubmit}>
+                            <Input
                                 placeholder='Email'
                                 name='email'
                                 value={email}
+                                validators={['required', 'isEmail']}
                                 onChange={this.handleChange}
+                                errorMessages={['this field is required', 'please enter valid email']}
                             />
-                            <Form.Input
+                            <Input
                                 placeholder='Password'
                                 name='password'
                                 value={password}
+                                validators={['required']}
                                 type='password'
                                 onChange={this.handleChange}
+                                errorMessages={['this field is required']}
                             />
-                            <Form.Button content={'submit'} />
+                            <Button content={'submit'} />
                         </Form>
                     </Grid.Column>
                 </Grid.Row>

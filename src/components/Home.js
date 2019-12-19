@@ -1,10 +1,11 @@
 import React from 'react';
 import NavBarMenu from  './NavBarMenu';
+import Posts from './Posts';
 
 const Home = ({ user, match }) => (
     <div>
         <NavBarMenu match={match} />
-        <p>Home page</p>
+        <Posts />
     </div>
 );
 
