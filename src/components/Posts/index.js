@@ -1,3 +1,3 @@
 import React from 'react'
-import Posts from './Posts';
-export default () => <Posts />
+import Index from './Table/index';
+export default () => <Index />

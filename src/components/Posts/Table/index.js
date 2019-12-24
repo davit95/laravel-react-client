@@ -1,11 +1,12 @@
 import React from 'react';
-import { Table } from 'semantic-ui-react';
-import http from '../../http';
-import Header from './Table/Header';
-import Body from './Table/Body';
-import Footer from './Table/Footer';
+import { Link } from 'react-router-dom';
+import { Table, Button, Icon } from 'semantic-ui-react';
+import http from '../../../http';
+import Header from './Header';
+import Body from './Body';
+import Footer from './Footer';
 
-class Posts extends React.PureComponent {
+class Index extends React.PureComponent {
     state = {
         posts: [],
         loading: false,
@@ -53,17 +54,30 @@ class Posts extends React.PureComponent {
 
     render() {
         return (
-            <Table celled>
-                <Header />
-                <Body posts={this.state.posts} />
-                <Footer
-                    pageCount={this.state.pageCount}
-                    activePage={this.state.activePage}
-                    setActivePage={this.setActivePage}
-                />
-            </Table>
+            <React.Fragment>
+                <Button
+                    as={Link}
+                    to={'/posts/create'}
+                    floated='right'
+                    icon
+                    labelPosition='left'
+                    primary
+                    size='small'
+                >
+                    <Icon name='user' /> Add Post
+                </Button>
+                <Table celled>
+                    <Header />
+                    <Body posts={this.state.posts} />
+                    <Footer
+                        pageCount={this.state.pageCount}
+                        activePage={this.state.activePage}
+                        setActivePage={this.setActivePage}
+                    />
+                </Table>
+            </React.Fragment>
         )
     }
 }
 
-export default Posts;
+export default Index;
