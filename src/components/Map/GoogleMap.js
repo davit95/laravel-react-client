@@ -8,7 +8,7 @@ import {
 import { compose, withProps } from "recompose"
 import NavBarMenu from "../NavBarMenu";
 
-const mapUrl = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyACeyzhO5pSL7bFaD5gknnxOCEt-PKGR8s';
+const mapUrl = '';
 
 
 const MapComponent = compose(
