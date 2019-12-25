@@ -5,10 +5,9 @@ import {
     GoogleMap,
     Marker,
 } from 'react-google-maps';
-import { compose, withProps } from "recompose"
-import NavBarMenu from "../NavBarMenu";
+import { compose, withProps } from 'recompose';
 
-const mapUrl = '';
+const mapUrl = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyACeyzhO5pSL7bFaD5gknnxOCEt-PKGR8s';
 
 
 const MapComponent = compose(
@@ -69,15 +68,12 @@ class Map extends React.PureComponent {
 
     render () {
         return (
-            <div>
-                <NavBarMenu match={this.props.match} />
-                <MapComponent
-                    isMarkerShown
-                    onMarkerClick={this.onMarkerClick}
-                    onMapClick={this.onMapClick}
-                    markers={this.state.markers}
-                />
-            </div>
+            <MapComponent
+                isMarkerShown
+                onMarkerClick={this.onMarkerClick}
+                onMapClick={this.onMapClick}
+                markers={this.state.markers}
+            />
         )
     }
 }

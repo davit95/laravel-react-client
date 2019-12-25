@@ -1,5 +1,5 @@
 import React from 'react';
-import {Loader, Image, Grid} from 'semantic-ui-react';
+import { Loader, Image, Grid } from 'semantic-ui-react';
 import http from "../../http";
 
 class InfinitePostShow extends React.PureComponent {

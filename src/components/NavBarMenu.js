@@ -3,58 +3,58 @@ import { Link } from "react-router-dom";
 import { Header, Menu } from "semantic-ui-react";
 import { client } from "../Client";
 
-const LoginButton = (match) => {
+const LoginButton = (path) => {
     return (
         <Menu.Item
             as={Link}
             to={'/login'}
             key={'login'}
             name='login'
-            active={match.path === '/login'}
+            active={path === '/login'}
         />
     )
 };
 
-const RegisterButton = (match) => {
+const RegisterButton = (path) => {
     return (
         <Menu.Item
             as={Link}
             to={'/register'}
             key={'register'}
             name='register'
-            active={match.path === '/register'}
+            active={path === '/register'}
         />
     )
 };
 
-const MenuLeftItems = (match) => (
+const MenuLeftItems = (path) => (
     <Menu.Menu position={'left'}>
         <Menu.Item
             as={Link}
             name='home'
             to={'/home'}
-            active={match.path === '/home' || match.path === '/'}
+            active={path === '/home' || path === '/'}
         />
         <Menu.Item
             as={Link}
             to={'/map'}
             name='map'
-            active={match.path === '/map'}
+            active={path === '/map'}
         />
 
         <Menu.Item
             as={Link}
             to={'/posts'}
             name='posts'
-            active={match.path === '/posts'}
+            active={path === '/posts'}
         />
     </Menu.Menu>
 );
 
-const NavBarMenu = ({ match, handleLogout }) => (
+const NavBarMenu = ({ location, handleLogout }) => (
     <Header>
         <Menu secondary>
-            { client.isLoggedIn() && MenuLeftItems(match) }
+            {client.isLoggedIn() && MenuLeftItems(location.pathname)}
             <Menu.Menu position='right'>
                 {
                     client.isLoggedIn() ? (
@@ -62,13 +62,13 @@ const NavBarMenu = ({ match, handleLogout }) => (
                             name='logout'
                             as={Link}
                             to={'/logout'}
-                            active={match.path === '/logout'}
+                            active={location.pathname === '/logout'}
                             onClick={handleLogout}
                         />
 
-                        ) :  (
+                    ) : (
                         [
-                            RegisterButton(match), LoginButton(match)
+                            RegisterButton(location.pathname), LoginButton(location.pathname)
                         ]
                     )
                 }
@@ -77,6 +77,7 @@ const NavBarMenu = ({ match, handleLogout }) => (
     </Header>
 );
 
-export default NavBarMenu;
+
+export default  NavBarMenu;
 
 

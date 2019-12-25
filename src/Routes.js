@@ -2,6 +2,7 @@ import React from "react";
 import {
     Switch,
     Route,
+    withRouter
 } from "react-router-dom";
 
 import Home from './components/Home';
@@ -13,10 +14,15 @@ import Login from './components/Auth/Login';
 import Register from './components/Auth/Register';
 import LogOut from './components/Auth/LogOut';
 import PrivateRoute from './PrivateRoute';
-const Notfound = () => <h1>Not found</h1>
+import NavBarMenu from './components/NavBarMenu';
+const Notfound = () => <h1>Not found</h1>;
+
+const Menu = withRouter(NavBarMenu)
+
 
 const Routes = ({ user, handleSetUser, handleRemoveUser }) => (
     <div>
+        <Menu />
         <Switch>
             <PrivateRoute path={"/home"} component={(routeProps) => <Home user={ user } {...routeProps} />} />
             <Route exact path="/logout" component={ (routeProps) => <LogOut handleRemoveUser={ handleRemoveUser } {...routeProps} /> } />

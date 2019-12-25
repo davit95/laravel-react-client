@@ -83,7 +83,6 @@ class InfinitePosts extends React.PureComponent {
     render() {
         return(
             <React.Fragment>
-                <NavBarMenu match={this.props.match} />
                 <InfiniteScroll
                     pageStart={0}
                     loadMore={this.loadMore}
