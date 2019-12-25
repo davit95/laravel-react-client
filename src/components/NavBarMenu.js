@@ -37,9 +37,9 @@ const MenuLeftItems = (match) => (
         />
         <Menu.Item
             as={Link}
-            to={'/messages'}
-            name='messages'
-            active={match.path === '/messages'}
+            to={'/map'}
+            name='map'
+            active={match.path === '/map'}
         />
 
         <Menu.Item
