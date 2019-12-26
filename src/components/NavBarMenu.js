@@ -1,5 +1,5 @@
 import React  from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { Header, Menu } from "semantic-ui-react";
 import { client } from "../Client";
 
@@ -51,7 +51,12 @@ const MenuLeftItems = (path) => (
     </Menu.Menu>
 );
 
-const NavBarMenu = ({ location, handleLogout }) => (
+const redirect = (location, handleRemoveUser) => handleRemoveUser() && <Redirect to={{
+    pathname: '/login',
+    state: location
+}}/>;
+
+const NavBarMenu = ({ location, handleLogout, handleRemoveUser }) => (
     <Header>
         <Menu secondary>
             {client.isLoggedIn() && MenuLeftItems(location.pathname)}
@@ -60,10 +65,8 @@ const NavBarMenu = ({ location, handleLogout }) => (
                     client.isLoggedIn() ? (
                         <Menu.Item
                             name='logout'
-                            as={Link}
-                            to={'/logout'}
                             active={location.pathname === '/logout'}
-                            onClick={handleLogout}
+                            onClick={() => redirect(location, handleRemoveUser)}
                         />
 
                     ) : (

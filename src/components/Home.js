@@ -1,6 +1,6 @@
 import React from 'react';
 import Posts from './Posts';
 
-const Home = ({ user, match }) => <Posts />
+const Home = () => <Posts />
 
 export default Home;

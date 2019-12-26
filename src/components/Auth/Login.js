@@ -3,7 +3,15 @@ import { Redirect } from 'react-router-dom';
 import LoginForm  from './LoginForm';
 import { client } from '../../Client';
 
-export default ({ user, handleSetUser, match }) => client.isLoggedIn() ?
-    <Redirect to={'/home'} /> :
+const redirectPath = (location) => {
+    const locationState = location.state;
+    const pathname = (
+        locationState && locationState.from && locationState.from.pathname
+    );
+    return pathname || '/home';
+};
+
+export default ({ user, handleSetUser, location }) => client.isLoggedIn() ?
+    <Redirect to={redirectPath(location)} /> :
     <LoginForm user={user} handleSetUser={handleSetUser} />
 
