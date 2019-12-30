@@ -7,7 +7,7 @@ import {
 } from 'react-google-maps';
 import { compose, withProps } from 'recompose';
 
-const mapUrl = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyACeyzhO5pSL7bFaD5gknnxOCEt-PKGR8s';
+const mapUrl = '';
 
 
 const MapComponent = compose(
