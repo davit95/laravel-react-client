@@ -8,7 +8,7 @@ const redirectPath = (location) => {
     const pathname = (
         locationState && locationState.from && locationState.from.pathname
     );
-    return pathname || '/home';
+    return pathname || '/profile';
 };
 
 export default ({ user, handleSetUser, location }) => client.isLoggedIn() ?

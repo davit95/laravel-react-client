@@ -43,12 +43,12 @@ class InfinitePosts extends React.PureComponent {
         <Grid columns='equal'>
             <Grid.Row textAlign='center'>
                 <Grid.Column>
-                    <Link to={`/posts/${id}/edit`}>
+                    <Link to={`/infinite-posts/${id}/edit`}>
                         <Icon name='edit' color={'blue'} />
                     </Link>
                 </Grid.Column>
                 <Grid.Column>
-                    <Link to={`/posts/${id}/show`}>
+                    <Link to={`/infinite-posts/${id}/show`}>
                         <Icon name='eye' color={'blue'} />
                     </Link>
                 </Grid.Column>

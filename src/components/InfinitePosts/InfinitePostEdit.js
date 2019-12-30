@@ -61,7 +61,7 @@ class InfinitePostsEdit extends React.PureComponent {
             loading ? (
                 <Loader active inline='centered' />
             ) : (
-                shouldRedirect ? <Redirect to={'/posts'} /> :
+                shouldRedirect ? <Redirect to={'/infinite-posts'} /> :
                 <Grid>
                     <Grid.Row centered>
                         <Grid.Column width={8}>

@@ -1,6 +1,5 @@
 import React from 'react';
-import Posts from './Posts';
 
-const Home = () => <Posts />
+const Home = () => <p>Home page here !!!</p>
 
 export default Home;
